@@ -2,29 +2,24 @@ name: Build & Publish Docker Image
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ Check out the code
       - uses: actions/checkout@v3
 
-      # 2️⃣ Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 3️⃣ Build & push the image
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./my_react_app/my_react_app   # chemin vers ton dossier de projet
+          file:    ./my_react_app/my_react_app/Dockerfile
           push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USER }}/my-react-app:latest
+          tags: ${{ secrets.DOCKERHUB_USER }}/my-react-app:latest
