@@ -19,7 +19,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./my_react_app/my_react_app   # chemin vers ton dossier de projet
-          file:    ./my_react_app/my_react_app/Dockerfile
+          context: ./my_react_app   # chemin vers ton dossier de projet
+          file:    ./my_react_app/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USER }}/my-react-app:latest
