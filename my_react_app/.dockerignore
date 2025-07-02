@@ -1,0 +1,17 @@
+# Node modules et build locaux
+node_modules
+build
+
+# Fichiers et dossiers de logs, Git, environnement
+*.log
+.git
+.gitignore
+
+# Dockerfile et config (pas besoin de se renvoyer soi-même)
+Dockerfile
+#nginx.conf
+
+# Éditeurs et systèmes
+.vscode
+.idea
+*.swp
